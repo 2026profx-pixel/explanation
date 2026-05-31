@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PRO FX</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#1b1710 0%,#080808 45%,#000 100%);
+    color:#f8f4eb;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* LOGIN */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:24px;
+}
+
+.login-box{
+
+    width:100%;
+    max-width:460px;
+
+    padding:50px 40px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(212,175,55,.15);
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.55);
+
+}
+
+.logo{
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:6px;
+
+    color:#d4af37;
+
+    margin-bottom:35px;
+
+    text-shadow:
+    0 0 25px rgba(212,175,55,.18);
+
+}
+
+input{
+
+    width:100%;
+
+    padding:18px 20px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.03);
+
+    color:white;
+
+    font-size:16px;
+
+    margin-bottom:18px;
+
+    outline:none;
+
+}
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* LOGIN BUTTON */
+
+.login-box button{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8a6a1b,
+        #d4af37,
+        #f4dd95
+    );
+
+    color:black;
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+
+
+/* HEADER */
+
+header{
+
+    padding:30px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid rgba(212,175,55,.08);
+
+}
+
+header h1{
+
+    font-size:28px;
+
+    color:#d4af37;
+
+    letter-spacing:5px;
+
+}
+
+
+
+/* CONTENT */
+
+.content{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:50px 20px;
+
+}
+
+.category{
+
+    margin-bottom:50px;
+
+}
+
+.category h2{
+
+    font-size:20px;
+
+    color:#e7d7a1;
+
+    margin-bottom:18px;
+
+}
+
+
+
+/* LESSON CARD */
+
+.video-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:22px 24px;
+
+    margin-bottom:14px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(212,175,55,.08);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.video-card:hover{
+
+    border-color:
+    rgba(212,175,55,.25);
+
+}
+
+
+
+/* BUTTON */
+
+.watch-btn{
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8a6a1b,
+        #d4af37
+    );
+
+    color:black;
+
+    font-weight:700;
+
+}
+
+
+
+/* CHECK */
+
+.check{
+
+    width:20px;
+
+    height:20px;
+
+    accent-color:#22c55e;
+
+    pointer-events:none;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .video-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOGIN -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">
+            PRO FX
+        </div>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Password">
+
+       <button
+    onclick="login()"
+    style="
+        width:100%;
+        padding:16px;
+        background:#d4af37;
+        color:black;
+        font-weight:bold;
+        box-shadow:
+        0 0 15px rgba(212,175,55,.25);
+    ">
+
+    LOGIN
+
+</button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ACADEMY -->
+
+<div
+    id="academyPage"
+    class="hidden">
+
+    <header>
+
+        <h1>
+            PRO FX
+        </h1>
+
+    </header>
+
+
+    <div class="content">
+
+        <div class="category">
+
+            <h2>
+                初心者 (30)
+            </h2>
+
+            <div id="beginner"></div>
+
+        </div>
+
+
+        <div class="category">
+
+            <h2>
+                中級者 (30)
+            </h2>
+
+            <div id="middle"></div>
+
+        </div>
+
+
+        <div class="category">
+
+            <h2>
+                上級者 (40)
+            </h2>
+
+            <div id="advanced"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+const PASSWORD="profx";
+
+
+
+// 動画URLはここだけ編集
+const videoUrls={
+
+    beginner:[
+        "https://example.com/1"
+    ],
+
+    middle:[
+        "https://example.com/1"
+    ],
+
+    advanced:[
+        "https://example.com/1"
+    ]
+
+};
+
+
+
+
+if(
+    sessionStorage.getItem(
+        "loggedIn"
+    )
+){
+    showAcademy();
+}
+
+
+
+
+function login(){
+
+    const pass=
+        document
+        .getElementById(
+            "password"
+        ).value;
+
+
+    if(
+        pass===PASSWORD
+    ){
+
+        sessionStorage
+        .setItem(
+            "loggedIn",
+            true
+        );
+
+
+        showAcademy();
+
+    }
+
+    else{
+
+        alert(
+            "Password incorrect"
+        );
+
+    }
+
+}
+
+
+
+
+function showAcademy(){
+
+    document
+        .getElementById(
+            "loginPage"
+        )
+        .remove();
+
+
+    document
+        .getElementById(
+            "academyPage"
+        )
+        .classList
+        .remove(
+            "hidden"
+        );
+
+
+    generateVideos();
+
+}
+
+
+
+
+function generateVideos(){
+
+    createVideos(
+        "beginner",
+        30
+    );
+
+    createVideos(
+        "middle",
+        30
+    );
+
+    createVideos(
+        "advanced",
+        40
+    );
+
+}
+
+
+
+
+function createVideos(
+    type,
+    count
+){
+
+    const container=
+        document
+        .getElementById(
+            type
+        );
+
+
+    for(
+        let i=1;
+        i<=count;
+        i++
+    ){
+
+        const key=
+            type+i;
+
+
+        const watched=
+            localStorage
+            .getItem(
+                key
+            );
+
+
+        container.innerHTML += `
+
+        <div class="video-card">
+
+            <div>
+
+                Lesson ${i}
+
+            </div>
+
+
+            <div class="video-actions">
+
+
+                <button
+
+                    class="watch-btn"
+
+                    onclick="
+                        playVideo(
+                            '${type}',
+                            ${i}
+                        )
+                    ">
+
+                    ▶ 視聴する
+
+                </button>
+
+
+                <label>
+
+                    視聴済み
+
+
+                   <input
+
+    id="${key}"
+
+    class="check"
+
+    type="checkbox"
+
+    ${
+        watched
+        ? "checked"
+        : ""
+    }
+
+    onclick="return false"
+
+    onkeydown="return false"
+
+    ontouchstart="return false"
+
+>
+
+                </label>
+
+
+            </div>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+
+
+function playVideo(
+    type,
+    index
+){
+
+    const key=
+        type+index;
+
+
+    // 自動チェック
+    localStorage
+    .setItem(
+        key,
+        true
+    );
+
+
+    document
+        .getElementById(
+            key
+        )
+        .checked=true;
+
+
+
+    // 動画へ飛ぶ
+    const url=
+        videoUrls[type][index-1];
+
+
+    if(
+        url
+    ){
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }
+
+    else{
+
+        alert(
+            "動画URLを設定してください"
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
