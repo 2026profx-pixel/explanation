@@ -411,9 +411,7 @@ passwordInput.addEventListener('keydown', function(e) {
 
 }
 
-const STARTER_PASSWORD = "starter123";
-const STANDARD_PASSWORD = "standard123";
-const PREMIUM_PASSWORD = "premium123";
+const PASSWORD = "profx123";
 
 function createVideos(plan){
 
@@ -469,17 +467,6 @@ function createVideos(plan){
   }
 
   // 手法解説
-  let strategyVideos = "";
-
-  const strategyCount =
-    plan === "starter" ? 0 : 70;
-
-  for(let i = 1; i <= strategyCount; i++){
-
-    strategyVideos +=
-      createVideoCard(`手法解説 ${i}`);
-
-  }
 
   grid.innerHTML = `
 
@@ -499,22 +486,6 @@ function createVideos(plan){
 
     </div>
 
-    <div class="video-category">
-
-      <div class="category-title">
-        手法解説
-      </div>
-
-      <div class="category-sub">
-        実践的なエントリー戦略
-      </div>
-
-      <div class="video-grid">
-        ${strategyVideos}
-      </div>
-
-    </div>
-
   `;
 
 }
@@ -529,34 +500,17 @@ function login(){
 
   error.textContent = "";
 
-  if(password === STARTER_PASSWORD){
+  if(password === PASSWORD){
 
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("membersArea").style.display = "block";
 
     document.getElementById("planTitle").textContent =
-      "STARTER PLAN";
+      "EXPLANATION VIDEO";
 
     createVideos("starter");
 
-  }
-
-  else if(
-    password === STANDARD_PASSWORD ||
-    password === PREMIUM_PASSWORD
-  ){
-
-    document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("membersArea").style.display = "block";
-
-    document.getElementById("planTitle").textContent =
-      "STANDARD : PREMIUM MEMBERS";
-
-    createVideos("premium");
-
-  }
-
-  else{
+  }else{
 
     error.textContent =
       "パスワードが違います";
